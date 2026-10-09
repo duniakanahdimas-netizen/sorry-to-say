@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kanah 🤍</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(145deg, #fff3f5, #f6efff, #fff9f1);
+  color: #59434d;
+  overflow-x: hidden;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  opacity: .6;
+  pointer-events: none;
+  animation: floatUp 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(92%, 540px);
+  margin: 35px auto;
+  padding-bottom: 35px;
+}
+
+.card {
+  background: rgba(255,255,255,.88);
+  border: 1px solid #ffffff;
+  border-radius: 26px;
+  padding: 30px 24px;
+  box-shadow: 0 15px 50px rgba(151, 102, 127, .12);
+  text-align: center;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stamp {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 50px;
+  background: #fff0f3;
+  color: #c16c88;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.big-heart {
+  font-size: 62px;
+  margin: 16px 0 5px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  margin: 8px 0;
+  color: #92556c;
+}
+
+.subtitle {
+  color: #ad8796;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.letter {
+  text-align: left;
+  line-height: 1.9;
+  font-size: 14px;
+  color: #66545d;
+}
+
+.letter p { margin: 0 0 17px; }
+
+.highlight {
+  color: #a75274;
+  font-weight: 600;
+}
+
+.quote {
+  border-left: 3px solid #e6a5ba;
+  background: #fff6f8;
+  padding: 14px 16px;
+  margin: 22px 0;
+  border-radius: 0 12px 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: #a45d78;
+  text-align: right;
+  margin-top: 22px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px dashed #eed4df;
+  margin: 25px 0;
+}
+
+.question {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  color: #92556c;
+  margin-bottom: 8px;
+}
+
+.hint {
+  font-size: 12px;
+  color: #a68c98;
+  margin-bottom: 18px;
+}
+
+.arena {
+  position: relative;
+  height: 125px;
+  margin: 0 auto;
+  max-width: 360px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff9fb;
+  border: 1px dashed #f0d4df;
+}
+
+button {
+  border: 0;
+  border-radius: 50px;
+  padding: 13px 19px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  touch-action: manipulation;
+}
+
+#forgive {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  color: white;
+  background: linear-gradient(135deg, #e88aa8, #bd7199);
+  box-shadow: 0 5px 14px #e9b6c9;
+  white-space: nowrap;
+}
+
+#forgive:hover {
+  background: #cf7295;
+  transform: translateX(-50%) scale(1.04);
+}
+
+#noForgive {
+  position: absolute;
+  left: 50%;
+  top: 73px;
+  transform: translateX(-50%);
+  color: #987b89;
+  background: #f0e7ec;
+  white-space: nowrap;
+}
+
+#result {
+  display: none;
+  margin-top: 22px;
+  padding: 20px 16px;
+  background: #fff2f6;
+  border-radius: 18px;
+  animation: appear .5s ease;
+}
+
+#result h2 {
+  font-family: 'Playfair Display', serif;
+  color: #a34e74;
+  font-size: 25px;
+}
+
+#result p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.small {
+  font-size: 11px;
+  color: #b29aa6;
+  margin-top: 22px;
+}
+
+#again {
+  background: #d783a1;
+  color: white;
+  margin-top: 10px;
+}
+
+@media (max-width: 380px) {
+  .card { padding: 24px 17px; }
+  h1 { font-size: 30px; }
+  .letter { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<main class="container">
+  <section class="card">
+
+    <div class="stamp">A LITTLE LETTER FOR YOU</div>
+    <div class="big-heart">💗</div>
+
+    <h1>Untuk Kanah</h1>
+    <div class="subtitle">
+      dari seseorang yang masih belajar memahami kamu
+    </div>
+
+    <div class="letter">
+
+      <p>Hai, Kanah.</p>
+
+      <p>
+        Aku nggak tahu harus mulai dari mana, tapi kali ini aku
+        mau mencoba menurunkan egoku sebentar. Bukan untuk
+        mencari siapa yang paling salah, bukan juga untuk
+        membuat kamu merasa harus mengalah lagi.
+        Aku cuma mau jujur sama kamu.
+      </p>
+
+      <p>
+        <span class="highlight">
+        Maaf, ya, sekali lagi kita gagal menjadi pasangan yang
+        seharusnya bisa saling memahami.
+        </span>
+        Dan kali ini, aku sadar kalau aku juga punya bagian
+        besar dalam kegagalan itu.
+      </p>
+
+      <p>
+        Aku gagal memahami kamu. Aku mungkin terlalu sibuk
+        melihat sesuatu dari sudut pandangku sendiri sampai
+        lupa kalau kamu punya cara berpikir, perasaan, dan
+        alasan yang belum tentu bisa langsung aku mengerti.
+        Aku sering merasa sudah memahami kamu, padahal
+        mungkin aku baru memahami apa yang ingin aku pahami.
+      </p>
+
+      <p>
+        Ada hal-hal yang kamu lakukan yang terkadang membuatku
+        bertanya-tanya. Aku masih belum sepenuhnya mengerti
+        bagaimana kamu memandang sesuatu, termasuk ketika
+        kamu sendiri mungkin belum menyadari dampak dari
+        tindakanmu terhadap perasaan orang lain.
+      </p>
+
+      <p>
+        Tapi aku sadar, Kanah, ketidakmengertianku bukan alasan
+        untuk berhenti mencoba memahami kamu. Seharusnya aku
+        bisa mengajakmu bicara baik-baik, bertanya tanpa
+        menghakimi, dan mendengarkan tanpa buru-buru
+        menyimpulkan. Bukan malah membiarkan semuanya berubah
+        menjadi pertengkaran yang membuat kita sama-sama lelah.
+      </p>
+
+      <div class="quote">
+        "Kita seharusnya menjadi dua orang yang saling belajar,
+        bukan dua orang yang sibuk membuktikan siapa yang
+        paling benar."
+      </div>
+
+      <p>
+        Maaf kalau caraku menyampaikan sesuatu membuat kamu
+        merasa tidak dimengerti. Maaf kalau egoku terkadang
+        lebih besar daripada keinginanku untuk mendengarkan.
+        Maaf kalau aku membuat kamu merasa sendirian, padahal
+        seharusnya aku menjadi seseorang yang bisa kamu ajak
+        menghadapi banyak hal.
+      </p>
+
+      <p>
+        Aku juga nggak mau berpura-pura seolah aku selalu
+        benar. Aku punya kekurangan, punya cara berpikir yang
+        kadang terlalu kaku, dan punya emosi yang kadang
+        membuatku lupa bahwa orang yang sedang kuhadapi adalah
+        orang yang aku sayangi.
+      </p>
+
+      <p>
+        Aku nggak meminta kamu melupakan apa yang membuatmu
+        kecewa hanya karena aku sudah meminta maaf. Aku tahu
+        kata maaf nggak otomatis memperbaiki semuanya.
+        Aku juga nggak ingin meminta kamu terus-menerus
+        memaklumi kesalahanku.
+      </p>
+
+      <p>
+        <span class="highlight">
+        Aku ingin belajar memperbaiki caraku mencintai kamu.
+        </span>
+        Belajar memahami sebelum bereaksi, belajar mendengarkan
+        sebelum membela diri, dan belajar menyelesaikan masalah
+        tanpa membuat kita merasa sedang berhadapan satu sama
+        lain.
+      </p>
+
+      <p>
+        Aku tahu hubungan ini nggak akan selalu mudah.
+        Kita punya isi kepala yang berbeda, punya kebiasaan
+        yang berbeda, dan mungkin punya cara yang berbeda
+        dalam menunjukkan perasaan. Tapi aku berharap
+        perbedaan itu nggak selalu berakhir dengan kita
+        saling menyakiti.
+      </p>
+
+      <p>
+        Aku nggak menuntut kita untuk selalu sepakat.
+        Aku cuma berharap kita bisa tetap saling menghargai
+        meskipun sedang nggak sepaham. Kalau ada sesuatu yang
+        belum kita mengerti, semoga kita mau belajar bersama,
+        bukan menyerah untuk saling mengenal.
+      </p>
+
+      <p>
+        Kanah, aku minta maaf. Bukan karena aku takut
+        kehilangan perdebatan, melainkan karena aku nggak
+        mau terus menyakiti seseorang yang sebenarnya ingin
+        aku bahagiakan.
+      </p>
+
+      <p>
+        Aku masih banyak kurangnya. Mungkin besok aku belum
+        langsung menjadi pasangan yang sempurna, dan aku
+        nggak akan menjanjikan perubahan hanya lewat tulisan
+        manis ini. Tapi aku ingin berusaha membuktikannya
+        lewat sikapku, sedikit demi sedikit.
+      </p>
+
+      <p>
+        Kalau kamu masih kecewa, aku mau belajar mendengarkan.
+        Kalau kamu masih butuh waktu, aku akan berusaha
+        menghargainya. Dan kalau ada hal tentang dirimu yang
+        belum aku pahami, aku ingin belajar mengenalnya
+        tanpa memaksamu menjadi seseorang yang berbeda.
+      </p>
+
+      <p>
+        Karena buatku, mencintai kamu bukan berarti aku harus
+        selalu mengerti segalanya tentangmu. Mencintai kamu
+        juga berarti aku harus punya kesabaran untuk terus
+        belajar, bahkan ketika memahami kita ternyata
+        nggak semudah yang aku bayangkan.
+      </p>
+
+      <p>
+        <span class="highlight">
+        Maaf karena sekali lagi aku belum berhasil menjadi
+        pasangan yang kamu butuhkan. Aku ingin kita menjadi
+        lebih baik, bukan cuma kembali seperti semula,
+        tetapi belajar agar kesalahan yang sama nggak terus
+        berulang.
+        </span>
+      </p>
+
+      <p>
+        Aku sayang kamu, Kanah. Dan aku berharap, di antara
+        semua hal yang belum berhasil kita pahami hari ini,
+        masih ada ruang untuk kita belajar memahami satu
+        sama lain esok hari.
+      </p>
+
+      <p>
+        Kamu nggak harus langsung baik-baik saja setelah
+        membaca ini. Aku cuma ingin kamu tahu bahwa aku
+        menyadari kesalahanku, dan perasaanmu tetap penting
+        buatku.
+      </p>
+
+      <p>
+        Sekali lagi, maaf, ya, sayang. 🤍
+      </p>
+
+      <div class="signature">
+        — seseorang yang masih ingin belajar<br>
+        mencintaimu dengan lebih baik.
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <div class="question">
+      Masih mau maafin aku nggak? 🥺
+    </div>
+
+    <div class="hint">
+      Pilih dengan hati-hati, ya, Nona Kanah.
+    </div>
+
+    <div class="arena" id="arena">
+      <button id="forgive" onclick="forgiven()">
+        Iya, aku maafin kamu 🤍
+      </button>
+
+      <button id="noForgive" type="button">
+        Nggak mau! 😤
+      </button>
+    </div>
+
+    <div id="result">
+      <div style="font-size:48px">🥹💗🫂</div>
+      <h2>Makasih, Kanah...</h2>
+      <p>
+        Makasih sudah meluangkan waktu untuk membaca
+        isi hatiku sampai selesai.
+      </p>
+      <p>
+        Aku nggak akan menganggap maafmu sebagai izin
+        untuk mengulangi kesalahan yang sama.
+        Aku ingin menjadikan ini pengingat supaya aku
+        bisa lebih baik dalam memahami dan memperlakukanmu.
+      </p>
+      <p>
+        Kita nggak harus menyelesaikan semuanya dalam
+        satu hari. Pelan-pelan, ya. Semoga setelah ini
+        kita bisa lebih banyak mendengarkan, lebih sedikit
+        menyakiti, dan lebih berani memperbaiki apa yang
+        memang perlu diperbaiki.
+      </p>
+      <h2>Sayang kamu, Kanah. 🤍</h2>
+      <p><i>Peluk jauh dari aku.</i> 🫂</p>
+      <button id="again" onclick="closeResult()">
+        Baca lagi suratnya 💌
+      </button>
+    </div>
+
+    <div class="small">
+      Dibuat dengan hati, bukan untuk memenangkan pertengkaran.
+      <br>Untuk Kanah, dari seseorang yang masih belajar.
+    </div>
+
+  </section>
+</main>
+
+<script>
+const arena = document.getElementById('arena');
+const noBtn = document.getElementById('noForgive');
+let attempts = 0;
+
+function runAway() {
+  const maxX = Math.max(0, arena.clientWidth - noBtn.offsetWidth);
+  const maxY = Math.max(0, arena.clientHeight - noBtn.offsetHeight);
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+  noBtn.style.transform = 'none';
+
+  attempts++;
+
+  const messages = [
+    'Yakin nggak mau? 🥺',
+    'Jangan gitu dong 😭',
+    'Aku kan udah minta maaf 🥹',
+    'Tombolnya ikut ngambek 😭',
+    'Kasih aku kesempatan, ya? 💗',
+    'Eits, kok dikejar?! 🏃‍♂️',
+    'Aku serius minta maaf, sayang 🥺'
+  ];
+
+  noBtn.textContent = messages[
+    Math.min(attempts - 1, messages.length - 1)
+  ];
+}
+
+noBtn.addEventListener('pointerenter', runAway);
+
+noBtn.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  runAway();
+}, { passive: false });
+
+noBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  runAway();
+});
+
+function forgiven() {
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+  for (let i = 0; i < 24; i++) {
+    setTimeout(createHeart, i * 70);
+  }
+}
+
+function closeResult() {
+  document.getElementById('result').style.display = 'none';
+  document.querySelector('.question').scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  const symbols = ['💗', '💕', '🤍', '💖', '✨'];
+
+  heart.className = 'heart';
+  heart.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+  heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+for (let i = 0; i < 9; i++) {
+  setTimeout(createHeart, i * 700);
+}
+</script>
+
+</body>
+</html>
